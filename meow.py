@@ -11,19 +11,31 @@ def resource_path(relative_path):
 
     return os.path.join(base_path, relative_path)
 
-filename = resource_path(os.path.join("audio", "meow.wav"))
-
-playback = Playback()
-playback.load_file(filename)
+meowList=["meowOne.wav","meowTwo.mp3","meowThree.mp3","meowFour.mp3","meowFive.mp3","meowSix.mp3","meowSeven.mp3"]
+playbackList=[]
+for i in range(0,7):
+    playbackList.append(Playback(resource_path(os.path.join("audio", meowList[i]))))
+index=2
 
 screen = turtle.Screen()
 screen.setup(width=500, height=500)
-turtle.write("Press g to meow and x to exit. \n", align="center")
+turtle.write("Press g to meow and x to exit.", align="center")
 def playSound():
-    print("playing sound")
-    playback.play()
-screen.onkeypress(playSound, "g")
+    global index
+    print("playing sound "+str(index))
+    playbackList[index].play()
 screen.onkeypress(turtle.bye, "x")
+
+def setASingleVariable(i):
+    print(i)
+    global index
+    index=i
+
+for i in range(1,8):
+    print(i)
+    screen.onkeypress(lambda i=i:setASingleVariable(i-1), str(i))
+
+screen.onkeypress(playSound, "g")
 screen.listen()
 turtle.mainloop()
 print("done\n")
