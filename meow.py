@@ -19,23 +19,28 @@ index=2
 
 screen = turtle.Screen()
 screen.setup(width=500, height=500)
+turtle.hideturtle()
 turtle.write("Press g to meow and x to exit.", align="center")
+turtle.penup()
+turtle.sety(-10)
+turtle.pendown()
+turtle.write("Use the numbers 1-6 to set the meow sfx.", align="center")
 def playSound():
     global index
-    print("playing sound "+str(index))
+   # print("playing sound "+str(index))
     playbackList[index].play()
 screen.onkeypress(turtle.bye, "x")
 
 def setASingleVariable(i):
-    print(i)
+    #print(i)
     global index
     index=i
 
 for i in range(1,8):
-    print(i)
+    #print(i)
     screen.onkeypress(lambda i=i:setASingleVariable(i-1), str(i))
 
 screen.onkeypress(playSound, "g")
 screen.listen()
 turtle.mainloop()
-print("done\n")
+#print("done\n")
