@@ -22,7 +22,7 @@ screen.setup(width=500, height=500)
 turtle.hideturtle()
 turtle.write("Press g to meow and x to exit.", align="center")
 turtle.penup()
-turtle.sety(-10)
+turtle.sety(-20)
 turtle.pendown()
 turtle.write("Use the numbers 1-6 to set the meow sfx.", align="center")
 def playSound():
